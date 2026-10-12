@@ -5,8 +5,12 @@ export default function Footer() {
   return (
     <footer className="glass !rounded-none border-x-0 border-b-0">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 sm:px-6 py-8 md:flex-row text-center md:text-left">
-        <a href="#top" className="text-lg font-extrabold">
-          <span className="grad-text">{company.name}</span>
+        <a href="#top" className="flex items-center gap-3 group" aria-label={company.name}>
+          <img
+            src="/logo.png"
+            alt={company.name}
+            className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_15px_rgba(56,189,248,0.25)]"
+          />
         </a>
 
         <ul className="flex flex-wrap justify-center gap-4 sm:gap-6">

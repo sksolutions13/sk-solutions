@@ -3,7 +3,7 @@
 // ============================================================
 
 export const company = {
-  name: 'S&K_solutions',
+  name: 'SK Solutions',
   tagline: 'We build, train, and ship intelligent digital products.',
   year: 2026,
   phone: '+91 9034842518 / +91 9958846946',
@@ -28,7 +28,7 @@ export const nav = [
 
 export const about = {
   story:
-    'S&K_solutions is a small technology company that builds websites and mobile/web apps, trains custom AI/ML models, and delivers complete projects and training modules. We work directly with our clients from the first conversation to launch and beyond.',
+    'SK Solutions is a technology company that builds websites and mobile/web apps, trains custom AI/ML models, and delivers complete projects and training modules. We work directly with our clients from the first conversation to launch and beyond.',
   mission:
     'Our mission is to turn ideas into working, reliable software, and to make AI practical for businesses and learners.',
   values: [

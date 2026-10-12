@@ -8,8 +8,16 @@ export default function Navbar({ dark, toggle }) {
   return (
     <header className="glass sticky top-0 z-50 !rounded-none border-x-0 border-t-0 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 py-3" aria-label="Main">
-        <a href="#top" className="text-base sm:text-lg font-extrabold tracking-tight">
-          <span className="grad-text">{company.name}</span>
+        <a href="#top" className="flex items-center gap-2.5 sm:gap-3 group" aria-label={company.name}>
+          <img
+            src="/logo-mark.png"
+            alt={company.name}
+            className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_10px_rgba(56,189,248,0.3)]"
+          />
+          <span className="text-base sm:text-lg font-black tracking-tight leading-none">
+            <span className="text-slate-900 dark:text-white font-extrabold">SK</span>{' '}
+            <span className="grad-text font-black">SOLUTIONS</span>
+          </span>
         </a>
 
         {/* Desktop Navigation */}
