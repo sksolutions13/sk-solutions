@@ -1,41 +1,36 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SK Solutions | Websites, Apps and AI/ML Development</title>
+    <meta name="description" content="SK Solutions builds websites and mobile/web apps, trains custom AI/ML models, and delivers end-to-end projects and training modules." />
+    <meta name="theme-color" content="#07070f" />
+    <meta property="og:title" content="SK Solutions" />
+    <meta property="og:description" content="We build, train, and ship intelligent digital products." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href="/favicons/favicon-plasma.png" id="favicon-link" />
+    <link rel="apple-touch-icon" href="/favicons/favicon-plasma.png" id="apple-touch-icon" />
     <script>
       (function() {
         try {
-          var t = localStorage.getItem('theme');
-          if (t === 'light') {
-            document.documentElement.classList.remove('dark');
-          } else {
-            document.documentElement.classList.add('dark');
-          }
-        } catch (e) {}
+          var validThemes = ['plasma', 'aurora', 'nebula', 'ember', 'fusion', 'daylight'];
+          var saved = localStorage.getItem('sk-theme') || 'plasma';
+          if (validThemes.indexOf(saved) === -1) saved = 'plasma';
+          var fav = document.getElementById('favicon-link');
+          if (fav) fav.href = '/favicons/favicon-' + saved + '.png';
+          var appleFav = document.getElementById('apple-touch-icon');
+          if (appleFav) appleFav.href = '/favicons/favicon-' + saved + '.png';
+          document.documentElement.dataset.theme = saved;
+        } catch(e) {}
       })();
     </script>
-    <title>SK Solutions | Websites, Apps and AI/ML Development</title>
-    <meta name="description" content="SK Solutions builds websites and mobile/web apps, trains custom AI/ML models, and delivers end-to-end projects and training modules." />
-    <meta name="keywords" content="web development, app development, AI, machine learning, data analytics, training, SK Solutions" />
-    <meta name="author" content="SK Solutions" />
-    <meta name="theme-color" content="#07070f" />
-    <!-- Open Graph / social previews -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="SK Solutions" />
-    <meta property="og:description" content="We build, train, and ship intelligent digital products." />
-    <meta property="og:image" content="/og-image.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
-  <body>
+  <body class="antialiased">
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

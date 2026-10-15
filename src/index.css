@@ -1,48 +1,106 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Theme tokens. Light values are the default; .dark (set on <html>) overrides them. */
-:root {
-  --bg: #f5f6fb; --fg: #0f172a; --muted: #475569;
-  --card: rgba(255, 255, 255, 0.7); --border: rgba(15, 23, 42, 0.12);
+/* Semantic colour tokens. The values come from the active theme (see :root / [data-theme] below),
+   so every utility like bg-bg, text-ink, border-line or bg-accent re-colours when the theme changes. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-2: var(--accent-2);
+  --color-accent-text: var(--accent-text);
 }
-.dark {
-  --bg: #07070f; --fg: #f1f5f9; --muted: #94a3b8;
-  --card: rgba(255, 255, 255, 0.05); --border: rgba(255, 255, 255, 0.12);
+
+/* ---- Themes ---- */
+:root,
+[data-theme='plasma'] {
+  color-scheme: dark;
+  --bg: #07070f;
+  --ink: #ffffff;
+  --body: #94a3b8;
+  --muted: #64748b;
+  --line: rgb(255 255 255 / 0.09);
+  --surface: rgb(255 255 255 / 0.025);
+  --accent: #c026d3;
+  --accent-hover: #d946ef;
+  --accent-2: #7c3aed;
+  --accent-text: #f0abfc;
+}
+[data-theme='aurora'] {
+  color-scheme: dark;
+  --bg: #05100e;
+  --ink: #ffffff;
+  --body: #94b3ab;
+  --muted: #5f7f77;
+  --line: rgb(255 255 255 / 0.09);
+  --surface: rgb(255 255 255 / 0.025);
+  --accent: #047857;
+  --accent-hover: #059669;
+  --accent-2: #0891b2;
+  --accent-text: #6ee7b7;
+}
+[data-theme='nebula'] {
+  color-scheme: dark;
+  --bg: #08061a;
+  --ink: #ffffff;
+  --body: #a19cc4;
+  --muted: #6f6a96;
+  --line: rgb(255 255 255 / 0.09);
+  --surface: rgb(255 255 255 / 0.025);
+  --accent: #7c3aed;
+  --accent-hover: #8b5cf6;
+  --accent-2: #db2777;
+  --accent-text: #c4b5fd;
+}
+[data-theme='ember'] {
+  color-scheme: dark;
+  --bg: #0d0805;
+  --ink: #ffffff;
+  --body: #b8a596;
+  --muted: #82705f;
+  --line: rgb(255 255 255 / 0.09);
+  --surface: rgb(255 255 255 / 0.025);
+  --accent: #c2410c;
+  --accent-hover: #ea580c;
+  --accent-2: #dc2626;
+  --accent-text: #fdba74;
+}
+[data-theme='fusion'] {
+  color-scheme: dark;
+  --bg: #050a14;
+  --ink: #ffffff;
+  --body: #93a5c0;
+  --muted: #5d6f8a;
+  --line: rgb(255 255 255 / 0.09);
+  --surface: rgb(255 255 255 / 0.025);
+  --accent: #0369a1;
+  --accent-hover: #0284c7;
+  --accent-2: #ea580c;
+  --accent-text: #7dd3fc;
+}
+[data-theme='daylight'] {
+  color-scheme: light;
+  --bg: #f7f5fb;
+  --ink: #16131f;
+  --body: #4b4760;
+  --muted: #8a86a0;
+  --line: rgb(22 19 31 / 0.12);
+  --surface: rgb(22 19 31 / 0.035);
+  --accent: #a21caf;
+  --accent-hover: #c026d3;
+  --accent-2: #7c3aed;
+  --accent-text: #a21caf;
 }
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: 'Sora', system-ui, sans-serif;
-  transition: background 0.3s, color 0.3s;
-  overflow-x: hidden;
-  width: 100%;
-  -webkit-tap-highlight-color: transparent;
+  background-color: var(--bg);
+  color: var(--ink);
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
-#root {
-  overflow-x: hidden;
-  width: 100%;
-}
-section[id] { scroll-margin-top: 4.5rem; }
-
-@layer components {
-  .glass { background: var(--card); border: 1px solid var(--border); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 1rem; }
-  .muted { color: var(--muted); }
-  .grad-text { background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .grad-bg { background: linear-gradient(90deg, #2563eb, #7c3aed); }
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: .75rem; font-weight: 600; transition: transform .2s, box-shadow .2s; }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-primary { background: linear-gradient(90deg, #2563eb, #7c3aed); color: #fff; box-shadow: 0 8px 30px -8px rgba(124, 58, 237, .6); }
-  .btn-ghost { border: 1px solid var(--border); background: var(--card); }
-  .field { width: 100%; padding: .75rem 1rem; border-radius: .75rem; background: var(--card); border: 1px solid var(--border); color: var(--fg); outline: none; }
-  .field:focus { border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139, 92, 246, .25); }
-}
-
-:focus-visible { outline: 2px solid #8b5cf6; outline-offset: 2px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
